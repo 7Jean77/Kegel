@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plano de Kegel</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f0f1a;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+    }
+
+    /* Progress bar */
+    .progress-wrap {
+      margin-bottom: 28px;
+    }
+    .progress-label {
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 8px;
+    }
+    .progress-bar {
+      height: 6px;
+      background: #2a2a3d;
+      border-radius: 99px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #7c3aed, #a855f7);
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+
+    /* Card */
+    .card {
+      background: #1a1a2e;
+      border-radius: 20px;
+      padding: 32px 28px;
+      animation: fadeIn 0.35s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-block;
+      background: #2a1a4e;
+      color: #a855f7;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 99px;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: #aaa;
+      margin-bottom: 24px;
+      line-height: 1.5;
+    }
+
+    /* Options */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .option {
+      background: #12122a;
+      border: 2px solid #2a2a4a;
+      border-radius: 12px;
+      padding: 14px 18px;
+      cursor: pointer;
+      font-size: 15px;
+      color: #ddd;
+      transition: all 0.2s;
+      text-align: left;
+    }
+    .option:hover {
+      border-color: #7c3aed;
+      background: #1e1040;
+      color: #fff;
+    }
+    .option.selected {
+      border-color: #a855f7;
+      background: #2a1a4e;
+      color: #fff;
+    }
+
+    /* Scale */
+    .scale-wrap {
+      margin-bottom: 24px;
+    }
+    .scale-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 12px;
+    }
+    .scale-buttons {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+    .scale-btn {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      border: 2px solid #2a2a4a;
+      background: #12122a;
+      color: #ddd;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .scale-btn:hover {
+      border-color: #7c3aed;
+      background: #1e1040;
+    }
+    .scale-btn.selected {
+      border-color: #a855f7;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: #fff;
+    }
+
+    /* Info card */
+    .info-box {
+      background: #12122a;
+      border-left: 4px solid #a855f7;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 24px;
+      font-size: 14px;
+      color: #ccc;
+      line-height: 1.6;
+    }
+
+    /* Stat highlight */
+    .stat-big {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .stat-big .number {
+      font-size: 64px;
+      font-weight: 800;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+    }
+    .stat-big .desc {
+      font-size: 15px;
+      color: #aaa;
+      margin-top: 8px;
+      line-height: 1.5;
+    }
+
+    /* Reviews */
+    .reviews {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .review {
+      background: #12122a;
+      border-radius: 12px;
+      padding: 14px 16px;
+    }
+    .review .stars { color: #facc15; font-size: 13px; margin-bottom: 4px; }
+    .review .author { font-size: 12px; color: #888; margin-bottom: 6px; }
+    .review .text { font-size: 13px; color: #ccc; line-height: 1.5; }
+
+    /* Result */
+    .result-box {
+      background: linear-gradient(135deg, #1e0a4e, #2a1a5e);
+      border: 1px solid #5b21b6;
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+    }
+    .result-box .goal { font-size: 14px; color: #c4b5fd; margin-bottom: 8px; }
+    .result-box .deadline { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .result-box .sub { font-size: 13px; color: #aaa; }
+    .compat {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      justify-content: center;
+    }
+    .compat .label { font-size: 13px; color: #aaa; }
+    .compat .value { font-size: 14px; font-weight: 700; color: #4ade80; }
+
+    /* Benefits list */
+    .benefits {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .benefits li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 15px;
+      color: #ddd;
+    }
+    .benefits li::before {
+      content: "✓";
+      width: 24px;
+      height: 24px;
+      background: #2a1a4e;
+      color: #a855f7;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Button */
+    .btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #7c3aed, #a855f7);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s, transform 0.1s;
+    }
+    .btn:hover { opacity: 0.9; }
+    .btn:active { transform: scale(0.98); }
+    .btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .note {
+      font-size: 11px;
+      color: #555;
+      text-align: center;
+      margin-top: 14px;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-label" id="progressLabel">Pergunta 1 de 9</div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:11%"></div></div>
+  </div>
+  <div class="card" id="card"></div>
+</div>
+
+<script>
+  const answers = {};
+
+  const steps = [
+    { type: "choice", id: "age", question: "Quantos anos você tem?", options: ["25–35", "35–45", "45–55", "55+"] },
+    { type: "choice", id: "goal", question: "Escolha seu objetivo principal", options: ["Melhorar a função erétil", "Melhorar o controle da ejaculação", "Maximizar o bem-estar sexual", "Aprimorar todos os itens acima"] },
+    { type: "choice", id: "erection_freq", question: "Com que frequência você tem problemas de ereção?", options: ["Nunca", "Raramente", "Muitas vezes", "O tempo todo", "Prefiro não responder"] },
+    {
+      type: "info", id: "info1",
+      badge: "Você sabia?",
+      title: "A ereção começa nos músculos",
+      body: "A qualidade da ereção depende da força dos músculos do assoalho pélvico. Músculos mais fortes ajudam a reter mais sangue no órgão masculino, resultando em uma ereção mais firme e duradoura.",
+    },
+    { type: "scale", id: "erection_quality", question: "Quão rígida é sua ereção durante o sexo?", labelLeft: "Não é rígida", labelRight: "Muito rígida" },
+    { type: "scale", id: "relationship_impact", question: "O quanto os problemas de ereção afetam seu relacionamento?", labelLeft: "Não afetam", labelRight: "Afetam muito" },
+    {
+      type: "info", id: "info2",
+      badge: "Base científica",
+      title: "Exercícios de Kegel funcionam",
+      body: "Os exercícios de Kegel fortalecem os músculos do assoalho pélvico, melhorando efetivamente a ereção e o controle ejaculatório.",
+      stat: "84%",
+      statDesc: "dos homens melhoraram sua função erétil seguindo o Plano de Kegel.",
+      reviews: [
+        { author: "Chauchoo", text: "Após 4 semanas de exercícios de Kegel, não tenho mais problemas para obter e manter uma ereção." },
+      ]
+    },
+    { type: "choice", id: "ejac_freq", question: "Com que frequência você ejacula antes do que gostaria?", options: ["Nunca", "Raramente", "Muitas vezes", "O tempo todo", "Prefiro não responder"] },
+    { type: "choice", id: "duration", question: "Quanto tempo costuma durar sua relação sexual?", options: ["Menos de 2 minutos", "2 a 7 minutos", "7 a 15 minutos", "15 minutos ou mais"] },
+    { type: "result" },
+  ];
+
+  const QUESTION_STEPS = steps.filter(s => s.type === "choice" || s.type === "scale").length;
+
+  let current = 0;
+  let questionCount = 0;
+  let totalQuestions = QUESTION_STEPS;
+
+  function getQuestionIndex() {
+    let count = 0;
+    for (let i = 0; i < current; i++) {
+      if (steps[i].type === "choice" || steps[i].type === "scale") count++;
+    }
+    return count;
+  }
+
+  function updateProgress() {
+    const step = steps[current];
+    const wrap = document.getElementById("progressWrap");
+    const label = document.getElementById("progressLabel");
+    const fill = document.getElementById("progressFill");
+
+    if (step.type === "result") {
+      wrap.style.display = "none";
+      return;
+    }
+
+    wrap.style.display = "block";
+    const qi = getQuestionIndex();
+    const pct = Math.round(((current) / (steps.length - 1)) * 100);
+    fill.style.width = Math.max(pct, 5) + "%";
+
+    if (step.type === "info") {
+      label.textContent = "Curiosidade";
+    } else {
+      label.textContent = `Pergunta ${qi + 1} de ${totalQuestions}`;
+    }
+  }
+
+  function renderStep() {
+    const step = steps[current];
+    const card = document.getElementById("card");
+    updateProgress();
+
+    if (step.type === "choice") {
+      card.innerHTML = `
+        <div class="badge">Pergunta ${getQuestionIndex() + 1}</div>
+        <h2>${step.question}</h2>
+        <div class="subtitle">Selecione uma opção abaixo</div>
+        <div class="options">
+          ${step.options.map((o, i) => `
+            <button class="option${answers[step.id] === i ? ' selected' : ''}" onclick="selectOption('${step.id}', ${i})">${o}</button>
+          `).join("")}
+        </div>
+        <button class="btn" id="nextBtn" ${answers[step.id] == null ? "disabled" : ""} onclick="nextStep()">Continuar</button>
+      `;
+    }
+
+    else if (step.type === "scale") {
+      card.innerHTML = `
+        <div class="badge">Pergunta ${getQuestionIndex() + 1}</div>
+        <h2>${step.question}</h2>
+        <div class="subtitle">Avalie de 1 a 5</div>
+        <div class="scale-wrap">
+          <div class="scale-labels"><span>${step.labelLeft}</span><span>${step.labelRight}</span></div>
+          <div class="scale-buttons">
+            ${[1,2,3,4,5].map(n => `
+              <button class="scale-btn${answers[step.id] === n ? ' selected' : ''}" onclick="selectScale('${step.id}', ${n})">${n}</button>
+            `).join("")}
+          </div>
+        </div>
+        <button class="btn" id="nextBtn" ${answers[step.id] == null ? "disabled" : ""} onclick="nextStep()">Continuar</button>
+      `;
+    }
+
+    else if (step.type === "info") {
+      const reviewsHtml = (step.reviews || []).map(r => `
+        <div class="review">
+          <div class="stars">★★★★★</div>
+          <div class="author">${r.author}</div>
+          <div class="text">${r.text}</div>
+        </div>
+      `).join("");
+
+      const statHtml = step.stat ? `
+        <div class="stat-big">
+          <div class="number">${step.stat}</div>
+          <div class="desc">${step.statDesc}</div>
+        </div>
+      ` : "";
+
+      card.innerHTML = `
+        <div class="badge">${step.badge}</div>
+        <h2>${step.title}</h2>
+        <div class="info-box">${step.body}</div>
+        ${statHtml}
+        ${reviewsHtml ? `<div class="reviews">${reviewsHtml}</div>` : ""}
+        <button class="btn" onclick="nextStep()">Entendido, continuar</button>
+      `;
+    }
+
+    else if (step.type === "result") {
+      const age = steps[0].options[answers["age"]] || "25–35";
+      const goalIdx = answers["goal"];
+      const goals = ["Melhorar a função erétil", "Melhorar o controle da ejaculação", "Maximizar o bem-estar sexual", "Aprimorar ambos os itens"];
+      const goal = goals[goalIdx != null ? goalIdx : 3];
+
+      card.innerHTML = `
+        <div class="badge">Seu plano está pronto!</div>
+        <h2>Parabéns por priorizar sua saúde sexual</h2>
+        <div class="subtitle">Com base nas suas respostas, criamos um plano de Kegel personalizado para você.</div>
+
+        <div class="result-box">
+          <div class="goal">${goal}</div>
+          <div class="deadline">Resultados em até 6 semanas</div>
+          <div class="sub">com apenas 5 minutos por dia</div>
+          <div class="compat">
+            <span class="label">Índice de compatibilidade:</span>
+            <span class="value">Alto ✓</span>
+          </div>
+        </div>
+
+        <div class="stat-big">
+          <div class="number">87,1%</div>
+          <div class="desc">dos homens de ${age} anos relatam melhorias notáveis seguindo o Plano de Kegel.</div>
+        </div>
+
+        <ul class="benefits">
+          <li>Função erétil aprimorada</li>
+          <li>Maior controle da ejaculação</li>
+          <li>Saúde da próstata fortalecida</li>
+          <li>Mais confiança e bem-estar</li>
+          <li>Felicidade no relacionamento</li>
+        </ul>
+
+        <div class="reviews">
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="author">Marrom</div>
+            <div class="text">Duas semanas e já sinto melhorias! Pessoal, vocês precisam experimentar!</div>
+          </div>
+          <div class="review">
+            <div class="stars">★★★★★</div>
+            <div class="author">FizzliviSphema</div>
+            <div class="text">Ao chegar aos 50 anos, pensei que meus melhores dias tinham acabado. Mas graças ao Kegel, me sinto como se tivesse 20 anos de novo!</div>
+          </div>
+        </div>
+
+        <button class="btn">Começar meu plano agora</button>
+        <p class="note">*Estatísticas de pesquisa interna · Equipamento: não necessário</p>
+      `;
+    }
+  }
+
+  function selectOption(id, index) {
+    answers[id] = index;
+    document.querySelectorAll(".option").forEach((el, i) => {
+      el.classList.toggle("selected", i === index);
+    });
+    const btn = document.getElementById("nextBtn");
+    if (btn) btn.disabled = false;
+  }
+
+  function selectScale(id, value) {
+    answers[id] = value;
+    document.querySelectorAll(".scale-btn").forEach((el, i) => {
+      el.classList.toggle("selected", i + 1 === value);
+    });
+    const btn = document.getElementById("nextBtn");
+    if (btn) btn.disabled = false;
+  }
+
+  function nextStep() {
+    if (current < steps.length - 1) {
+      current++;
+      renderStep();
+    }
+  }
+
+  renderStep();
+</script>
+</body>
+</html>
