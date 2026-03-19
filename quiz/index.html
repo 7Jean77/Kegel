@@ -49,7 +49,7 @@
     .card {
       background: #fff;
       border-radius: 20px;
-      padding: 32px 28px;
+      padding: 32px 28px 96px;
       animation: fadeIn 0.35s ease;
       box-shadow: 0 2px 16px rgba(0,0,0,0.08);
     }
@@ -374,7 +374,7 @@
 </head>
 <body>
 <div id="stickyBtn" style="display:none; position:fixed; bottom:0; left:0; right:0; padding:16px 20px; background:transparent; z-index:999;">
-  <button class="btn" style="max-width:480px; margin:0 auto; display:block;">Começar meu plano agora</button>
+  <button class="btn" id="stickyBtnInner" style="max-width:480px; margin:0 auto; display:block;" onclick="stickyNext()">Continuar</button>
 </div>
 
 <div class="container">
@@ -465,8 +465,8 @@
     card.style.color = "";
     document.body.style.background = "";
     document.getElementById("globalLogo").src = "BR_logo_white_bg.webp";
-    document.getElementById("stickyBtn").style.display = "none";
     updateProgress();
+    updateStickyBtn();
 
     if (step.type === "intro") {
       card.className = "";
@@ -482,7 +482,6 @@
                 <button class="option${answers["age"] === i ? ' selected' : ''}" onclick="selectIntroAge(${i})">${o}</button>
               `).join("")}
             </div>
-            <button class="btn" id="introBtn" ${answers["age"] == null ? "disabled" : ""} onclick="nextStep()">Começar agora →</button>
             <p style="font-size:13px; font-weight:600; color:#555; margin-top:24px; margin-bottom:8px; text-align:center; text-transform:uppercase; letter-spacing:0.08em;">Fontes:</p>
             <img src="img_source_logos_bw.webp" alt="Fontes" style="width:100%; border-radius:10px;" />
             <ol style="margin-top:20px; padding-left:18px; text-align:left; display:flex; flex-direction:column; gap:14px;">
@@ -514,7 +513,6 @@
             <button class="option${answers[step.id] === i ? ' selected' : ''}" onclick="selectOption('${step.id}', ${i})">${o}</button>
           `).join("")}
         </div>
-        <button class="btn" id="nextBtn" ${answers[step.id] == null ? "disabled" : ""} onclick="nextStep()">Continuar</button>
       `;
     }
 
@@ -531,7 +529,6 @@
             `).join("")}
           </div>
         </div>
-        <button class="btn" id="nextBtn" ${answers[step.id] == null ? "disabled" : ""} onclick="nextStep()">Continuar</button>
       `;
     }
 
@@ -577,7 +574,6 @@
         <div class="info-box" style="${step.darkbg ? 'background:transparent; border:none; color:#ccc; text-align:center;' : ''}">${step.body}</div>
         ${statHtml}
         ${reviewsHtml ? `<div class="reviews">${reviewsHtml}</div>` : ""}
-        <button class="btn" onclick="nextStep()">Entendido, continuar</button>
       `;
     }
 
@@ -676,13 +672,41 @@
     }
   }
 
+  function updateStickyBtn() {
+    const step = steps[current];
+    const btn = document.getElementById("stickyBtn");
+    const inner = document.getElementById("stickyBtnInner");
+    if (step.type === "loading" || step.type === "result") {
+      btn.style.display = step.type === "result" ? "block" : "none";
+      if (step.type === "result") inner.textContent = "Começar meu plano agora";
+      return;
+    }
+    btn.style.display = "block";
+    if (step.type === "intro") {
+      inner.textContent = "Começar agora →";
+      inner.disabled = answers["age"] == null;
+    } else if (step.type === "choice") {
+      inner.textContent = "Continuar";
+      inner.disabled = answers[step.id] == null;
+    } else if (step.type === "scale") {
+      inner.textContent = "Continuar";
+      inner.disabled = answers[step.id] == null;
+    } else if (step.type === "info") {
+      inner.textContent = "Entendido, continuar";
+      inner.disabled = false;
+    }
+  }
+
+  function stickyNext() {
+    nextStep();
+  }
+
   function selectIntroAge(index) {
     answers["age"] = index;
     document.querySelectorAll(".intro-screen .option").forEach((el, i) => {
       el.classList.toggle("selected", i === index);
     });
-    const btn = document.getElementById("introBtn");
-    if (btn) btn.disabled = false;
+    updateStickyBtn();
   }
 
   function selectOption(id, index) {
@@ -690,8 +714,7 @@
     document.querySelectorAll(".option").forEach((el, i) => {
       el.classList.toggle("selected", i === index);
     });
-    const btn = document.getElementById("nextBtn");
-    if (btn) btn.disabled = false;
+    updateStickyBtn();
   }
 
   function selectScale(id, value) {
@@ -699,8 +722,7 @@
     document.querySelectorAll(".scale-btn").forEach((el, i) => {
       el.classList.toggle("selected", i + 1 === value);
     });
-    const btn = document.getElementById("nextBtn");
-    if (btn) btn.disabled = false;
+    updateStickyBtn();
   }
 
   function nextStep() {
