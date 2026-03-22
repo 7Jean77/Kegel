@@ -280,6 +280,13 @@
       0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(192,57,43,0.5); }
       50% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(192,57,43,0); }
     }
+    .btn-pulse-green {
+      animation: pulse-green 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-green {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(34,197,94,0.5); }
+      50% { transform: scale(1.03); box-shadow: 0 0 0 10px rgba(34,197,94,0); }
+    }
     .btn:disabled {
       opacity: 0.35;
       cursor: not-allowed;
@@ -630,10 +637,10 @@
             ✦ Resultado da análise
           </div>
           <h2 style="font-size:22px; font-weight:800; line-height:1.35; margin-bottom:16px; color:#fff;">Identificamos o problema — e a boa notícia é que <span style="color:#c0392b;">tem solução</span></h2>
-          <p style="font-size:14px; color:#ccc; line-height:1.6; margin-bottom:12px; text-align:center;"><strong style="color:#fff; font-weight:900;">84%</strong> dos homens melhoraram a função erétil ao seguir o <strong style="color:#fff; font-weight:900;">plano de Kegel</strong></p>
-          <img src="BR_img_erection_84.webp" alt="" style="width:100%; border-radius:12px; margin-bottom:16px;" />
           <p style="font-size:14px; color:#ccc; line-height:1.7; margin-bottom:16px;">Com base nas suas respostas, seu corpo está mandando <strong style="color:#fff;">sinais claros de alerta</strong>. Ignorar isso vai piorar com o tempo — mas reverter é mais <strong style="color:#fff;">simples do que você imagina.</strong></p>
-          <div style="background:#1a1a1a; border:1px solid #f1948a; border-radius:14px; padding:18px 20px; margin-bottom:24px;">
+          <img src="BR_img_erection_84.webp" alt="" style="width:100%; border-radius:12px; margin-bottom:12px;" />
+          <p style="font-size:14px; color:#ccc; line-height:1.6; margin-bottom:16px; text-align:center;"><strong style="color:#fff; font-weight:900;">84%</strong> dos homens melhoraram a função erétil ao seguir o <strong style="color:#fff; font-weight:900;">plano de Kegel</strong></p>
+          <div style="background:#1a1a1a; border:1px solid #888; border-radius:14px; padding:18px 20px; margin-bottom:24px;">
             <p style="font-size:14px; color:#ccc; line-height:1.6;">Homens que identificaram esse padrão cedo conseguiram recuperar a performance em <strong style="color:#e74c3c;">menos de 2 semanas.</strong></p>
           </div>
         </div>
@@ -653,7 +660,7 @@
           </div>
           <h2 style="font-size:26px; font-weight:800; line-height:1.3; text-align:center; margin-bottom:12px;">Você não é o problema — mas ignorar isso vai te <span style="color:#c0392b;">custar caro na cama</span></h2>
           <p style="font-size:14px; color:#666; text-align:center; line-height:1.6;">Identificamos exatamente o que está travando o seu desempenho. Homens com esse perfil reverteram o problema em até 5 semanas seguindo esse método</p>
-          <button class="btn btn-pulse" style="margin-top:20px; letter-spacing:0.05em; font-size:15px; padding:16px 24px;" onclick="alert('Plano iniciado!')">COMEÇAR MEU PLANO AGORA →</button>
+          <button class="btn btn-pulse-green" style="margin-top:20px; letter-spacing:0.05em; font-size:15px; padding:16px 24px; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="document.getElementById('mainPricingBlock').scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(()=>document.getElementById('mainCta').click(),600);">COMEÇAR MEU PLANO AGORA →</button>
           <p style="font-size:12px; color:#aaa; margin-top:8px; font-weight:700;">Garantia 7 dias • Acesso imediato • R$19,90</p>
         </div>
 
@@ -683,7 +690,7 @@
           <li>Ela vai notar a diferença</li>
         </ul>
 
-        <div style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-bottom:24px; border:1px solid #f1948a;">
+        <div id="mainPricingBlock" style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-bottom:24px; border:1px solid #888;">
           <p style="font-size:15px; font-weight:800; color:#111; line-height:1.4; margin-bottom:12px;">⚡ Você está a um clique de<br>Recuperar sua performance de verdade</p>
           <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;">
             <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 47,00</span>
@@ -692,10 +699,10 @@
           <p style="font-size:14px; color:#555; margin-bottom:2px;">por apenas</p>
           <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">19</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
           <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 0,70 por dia pra voltar a ser o homem que ela quer</p>
-          <div style="display:inline-flex; align-items:center; gap:6px; background:#3a1a00; color:#f0a04a; font-size:12px; font-weight:600; padding:6px 14px; border-radius:99px; margin-bottom:16px; border:1px solid #6a3a00;">
-            ⏱ Só até hoje por esse preço
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#92620a; color:#ffe600; font-size:12px; font-weight:600; padding:6px 14px; border-radius:99px; margin-bottom:16px; border:1px solid #78500a;">
+            ⏱ Oferta expira em <span class="countdown-timer">15:00</span>
           </div>
-          <button class="btn btn-pulse" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px;" onclick="alert('Plano iniciado!')">COMEÇAR MEU PLANO AGORA →</button>
+          <button id="mainCta" class="btn btn-pulse-green" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="">COMEÇAR MEU PLANO AGORA →</button>
           <p style="font-size:12px; color:#666; font-weight:600;">✓ Garantia 7 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
         </div>
 
@@ -745,7 +752,7 @@
           </div>
         </div>
 
-        <div style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-top:8px; margin-bottom:16px; border:1px solid #f1948a;">
+        <div style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-top:8px; margin-bottom:16px; border:1px solid #888;">
           <p style="font-size:15px; font-weight:800; color:#111; line-height:1.4; margin-bottom:12px;">⚡ Você está a um clique de<br>Recuperar sua performance de verdade</p>
           <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;">
             <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 47,00</span>
@@ -754,10 +761,10 @@
           <p style="font-size:14px; color:#555; margin-bottom:2px;">por apenas</p>
           <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">19</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
           <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 0,70 por dia pra voltar a ser o homem que ela quer</p>
-          <div style="display:inline-flex; align-items:center; gap:6px; background:#3a1a00; color:#f0a04a; font-size:12px; font-weight:600; padding:6px 14px; border-radius:99px; margin-bottom:16px; border:1px solid #6a3a00;">
-            ⏱ Só até hoje por esse preço
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#92620a; color:#ffe600; font-size:12px; font-weight:600; padding:6px 14px; border-radius:99px; margin-bottom:16px; border:1px solid #78500a;">
+            ⏱ Oferta expira em <span class="countdown-timer">15:00</span>
           </div>
-          <button class="btn btn-pulse" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px;" onclick="alert('Plano iniciado!')">COMEÇAR MEU PLANO AGORA →</button>
+          <button class="btn btn-pulse-green" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="document.getElementById('mainPricingBlock').scrollIntoView({behavior:'smooth', block:'center'}); setTimeout(()=>document.getElementById('mainCta').click(),600);">COMEÇAR MEU PLANO AGORA →</button>
           <p style="font-size:12px; color:#666; font-weight:600;">✓ Garantia 7 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
         </div>
 
@@ -794,6 +801,17 @@
   function stickyNext() {
     nextStep();
   }
+
+  // Countdown timer (15 min, shared across all .countdown-timer elements)
+  let _cdSecs = 15 * 60;
+  function _updateCountdown() {
+    const m = String(Math.floor(_cdSecs / 60)).padStart(2, '0');
+    const s = String(_cdSecs % 60).padStart(2, '0');
+    document.querySelectorAll('.countdown-timer').forEach(el => el.textContent = m + ':' + s);
+    if (_cdSecs > 0) _cdSecs--;
+  }
+  setInterval(_updateCountdown, 1000);
+  _updateCountdown();
 
   function selectIntroAge(index) {
     answers["age"] = index;
