@@ -419,7 +419,7 @@
       title: "A ereção começa nos músculos", hidetitle: true, darkbg: true,
       pretitle: `<span style="color:#fff;">A <span style="text-decoration:underline;">Qualidade da Ereção</span> depende da força dos</span> <span style="color:#22c55e;">Músculos do Assoalho Pélvico (MAP)</span>`,
       body: "<strong style='color:#fff; text-decoration:underline;'>Músculos do Assoalho Pélvico</strong> (MAP) mais fortes ajudam a preencher e reter mais sangue no órgão masculino, o que leva a <strong style='color:#fff; text-decoration:underline;'>ereções mais intensas e duradouras.</strong>",
-      video: "video_ED_s1.mp4",
+      video: "video_ED_s1.mp4", videoPoster: "poster_video_ED.webp",
     },
     { type: "choice", id: "erection_quality", question: "Você já evitou uma situação sexual por medo de decepcionar?", options: ["Sim, várias vezes", "Já aconteceu uma ou duas vezes", "Ainda não, mas fico com medo que aconteça", "Não, mas quero melhorar mesmo assim"] },
     { type: "choice", id: "relationship_impact", question: "Como você se sente antes de uma transa?", options: ["Ansioso — fico com medo de decepcionar", "Inseguro, mas vou mesmo assim", "Normal, mas já não tenho aquela animação de antes", "Evito a situação pra não passar vergonha"] },
@@ -586,7 +586,7 @@
   </div>
 </div>` : ""}
         ${step.title && !step.hidetitle ? `<h2>${step.title}</h2>` : ""}
-        ${step.video ? `<video src="${step.video}" autoplay loop muted playsinline style="width:100%; border-radius:12px; margin:16px 0;"></video>` : ""}
+        ${step.video ? `<video src="${step.video}" ${step.videoPoster ? `poster="${step.videoPoster}"` : ""} autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px; margin:16px 0;"></video>` : ""}
         <div class="info-box" style="${step.darkbg ? 'background:transparent; border:none; color:#ccc; text-align:center;' : ''}">${step.body}</div>
         ${statHtml}
         ${reviewsHtml ? `<div class="reviews">${reviewsHtml}</div>` : ""}
@@ -665,7 +665,7 @@
           <p style="font-size:12px; color:#aaa; margin-top:8px; font-weight:700;">Garantia 7 dias • Acesso imediato • R$19,90</p>
         </div>
 
-        <video src="BR_video_graph_pp2.mp4" autoplay loop muted playsinline style="width:100%; border-radius:12px; margin-bottom:16px;"></video>
+        <video src="BR_video_graph_pp2.mp4" poster="poster_video_graph.webp" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px; margin-bottom:16px;"></video>
 
         <div class="result-box">
           <div class="goal">⚡ Homens com seu perfil relataram:</div>
