@@ -414,11 +414,26 @@
   <div style="text-align:center; margin-bottom:16px;">
     <img id="globalLogo" src="BR_logo_white_bg.webp" alt="Logo" style="max-height:60px; object-fit:contain;" />
   </div>
-  <div class="progress-wrap" id="progressWrap">
+  <div class="progress-wrap" id="progressWrap" style="display:none;">
     <div class="progress-label" id="progressLabel">Pergunta 1 de 8</div>
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:5%"></div></div>
   </div>
-  <div id="card"></div>
+  <div id="card"><div class="intro-screen">
+    <h1 class="intro-title">Seu pau ficou <span>fraco</span>? Isso tem solução — e é mais <span>simples do que você pensa</span></h1>
+    <img class="intro-img" src="ChatGPT Image 19 de mar. de 2026, 20_35_22.webp" alt="Casais felizes" width="480" height="300" fetchpriority="high" />
+    <img class="intro-benefits-img" src="BR_benefits.webp" alt="Benefícios" width="1125" height="189" loading="lazy" style="width:100%; height:auto;" />
+    <div class="intro-body">
+      <div class="intro-age-label">Quantos anos você tem?</div>
+      <div class="options">
+        <button class="option" onclick="selectIntroAge(0)">25-35</button>
+        <button class="option" onclick="selectIntroAge(1)">35-45</button>
+        <button class="option" onclick="selectIntroAge(2)">45-55</button>
+        <button class="option" onclick="selectIntroAge(3)">55+</button>
+      </div>
+      <p style="font-size:13px; font-weight:600; color:#555; margin-top:24px; margin-bottom:8px; text-align:center; text-transform:uppercase; letter-spacing:0.08em;">Fontes:</p>
+      <img src="img_source_logos_bw.webp" alt="Fontes" width="1029" height="441" loading="lazy" style="width:100%; height:auto; border-radius:10px;" />
+    </div>
+  </div></div>
 </div>
 
 <script>
