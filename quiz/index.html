@@ -431,13 +431,7 @@
     <p class="intro-sub">Existe um músculo que, quanto mais forte, mais dura e mais firme a ereção — com resultados equivalentes ao remédio, sem tomar um único comprimido. Responda 6 perguntas e descubra se o seu ainda pode ser recuperado.</p>
     <video class="intro-img" src="kling_20260329_作品_pelvic_flo_299_0.mp4" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px;"></video>
     <div class="intro-body">
-      <div class="intro-age-label">O que mais te incomoda hoje na sua vida sexual?</div>
-      <div class="options">
-        <button class="option" onclick="selectIntroAge(0)">Minha ereção não presta mais</button>
-        <button class="option" onclick="selectIntroAge(1)">Gozar rápido demais e deixar ela insatisfeita</button>
-        <button class="option" onclick="selectIntroAge(2)">Falta de tesão e libido baixa</button>
-        <button class="option" onclick="selectIntroAge(3)">Sinto que perdi minha masculinidade na cama</button>
-      </div>
+      <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#c0392b,#e74c3c);" onclick="nextStep()">Iniciar o teste →</button>
       <div style="display:flex; justify-content:center; margin-top:16px;">
         <img class="intro-benefits-img" src="BR_benefits_anonimo.webp" alt="100% anônimo" width="375" height="189" loading="lazy" style="width:auto; height:auto; max-width:160px;" />
       </div>
@@ -477,10 +471,11 @@
         { author: "Marcelo", age: "36 anos", photo: "RnPtYZBFTrFNmgnyoNbfN3lvoRORgf_Qx3jouVU8lPF4ap6As4PUUR0IdLircMqtWbb81GPGipjIx9YRl0Diil3EunUvk2mb_x16OrFOjDRTBP3_LM6QEtiOD1K9cE2y_zKPI4nDCYAWjVglPnlucrAgGJxI0vtq3NnkuHQL9TA8ELToBbf3JGpi9qprr8yI.jpg.webp", text: "Após 4 semanas de exercícios de Kegel, não tenho mais problemas para obter e manter uma ereção. Se você está com dificuldades como eu estava, experimente estes exercícios." },
       ]
     },
-    { type: "choice", id: "ejac_freq", question: "Como você se sente antes do sexo?", options: ["Ansioso — fico com medo de decepcionar", "Inseguro, mas vou mesmo assim", "Normal, mas já não tenho aquela animação de antes", "Evito a situação pra não passar vergonha"] },
-    { type: "choice", id: "duration", question: "Você prefere continuar dependendo de remédio — ou dedicar 5 minutos por dia pra resolver isso de vez?", options: ["Quero resolver de vez — chega de remédio", "Nunca usei remédio e quero resolver antes de precisar", "Já tentei de tudo e quero uma solução real", "Quero conhecer o método e começar logo"] },
+    { type: "choice", id: "ejac_freq", question: "O que mais te incomoda hoje na sua vida sexual?", options: ["Minha ereção não presta mais", "Gozar rápido demais e deixar ela insatisfeita", "Falta de tesão e libido baixa", "Sinto que perdi minha masculinidade na cama"] },
+    { type: "choice", id: "duration", question: "Como você se sente antes do sexo?", options: ["Ansioso — fico com medo de decepcionar", "Inseguro, mas vou mesmo assim", "Normal, mas já não tenho aquela animação de antes", "Evito a situação pra não passar vergonha"] },
+    { type: "gencta" },
+    { type: "generating" },
     { type: "midresult" },
-    { type: "loading" },
     { type: "result" },
   ];
 
@@ -501,7 +496,7 @@
     const label = document.getElementById("progressLabel");
     const fill = document.getElementById("progressFill");
 
-    if (step.type === "result" || step.type === "intro" || step.type === "loading" || step.type === "midresult") {
+    if (step.type === "result" || step.type === "intro" || step.type === "loading" || step.type === "midresult" || step.type === "generating" || step.type === "gencta") {
       wrap.style.display = "none";
       return;
     }
@@ -536,12 +531,7 @@
     <p class="intro-sub">Existe um músculo que, quanto mais forte, mais dura e mais firme a ereção — com resultados equivalentes ao remédio, sem tomar um único comprimido. Responda 6 perguntas e descubra se o seu ainda pode ser recuperado.</p>
           <video class="intro-img" src="kling_20260329_作品_pelvic_flo_299_0.mp4" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px;"></video>
           <div class="intro-body">
-            <div class="intro-age-label">O que mais te incomoda hoje na sua vida sexual?</div>
-            <div class="options">
-              ${["Minha ereção não presta mais", "Gozar rápido demais e deixar ela insatisfeita", "Falta de tesão e libido baixa", "Sinto que perdi minha masculinidade na cama"].map((o, i) => `
-                <button class="option${answers["intro_choice"] === i ? ' selected' : ''}" onclick="selectIntroAge(${i})">${o}</button>
-              `).join("")}
-            </div>
+            <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#c0392b,#e74c3c);" onclick="nextStep()">Iniciar o teste →</button>
             <div style="text-align:center; margin-top:16px;">
               <img class="intro-benefits-img" src="BR_benefits_anonimo.webp" alt="100% anônimo" width="375" height="189" loading="lazy" style="width:auto; height:auto; max-width:160px;" />
             </div>
@@ -631,6 +621,85 @@
       `;
     }
 
+    else if (step.type === "gencta") {
+      document.getElementById("globalLogo").src = "BR_logo_white_bg.webp";
+      card.innerHTML = `
+        <div style="text-align:center; padding:16px 0;">
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#e05a47; color:#fde8e6; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:20px;">
+            ✦ ANÁLISE CONCLUÍDA
+          </div>
+          <h2 style="font-size:22px; font-weight:800; color:#111; line-height:1.35; margin-bottom:12px;">Suas respostas foram analisadas com sucesso</h2>
+          <p style="font-size:14px; color:#555; line-height:1.7; margin-bottom:32px;">Com base no seu perfil, é possível criar um protocolo de exercícios Kegel 100% personalizado para o seu caso.</p>
+          <button class="btn" style="width:100%; font-size:16px; font-weight:800; padding:18px 24px; letter-spacing:0.04em; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="nextStep()">Gerar um Protocolo</button>
+          <p style="font-size:12px; color:#999; margin-top:12px;">100% gratuito • Sem compromisso</p>
+        </div>
+      `;
+    }
+
+    else if (step.type === "generating") {
+      card.style.background = "#000";
+      card.style.color = "#fff";
+      document.body.style.background = "#000";
+      document.getElementById("globalLogo").src = "BR_logo_dark_bg.webp";
+      card.innerHTML = `
+        <div style="text-align:center; padding:16px 0;">
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#e05a47; color:#fde8e6; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:24px;">
+            ⚙️ GERANDO SEU PROTOCOLO
+          </div>
+          <h2 style="font-size:20px; font-weight:800; color:#fff; line-height:1.4; margin-bottom:8px;">Analisando suas respostas e<br>criando seu protocolo personalizado...</h2>
+          <p style="font-size:13px; color:#aaa; margin-bottom:32px;">Isso leva apenas alguns segundos</p>
+
+          <div style="display:flex; flex-direction:column; gap:16px; margin-bottom:32px; text-align:left;">
+            <div style="display:flex; align-items:center; gap:12px;" id="gen-step-1">
+              <div style="width:28px; height:28px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;" id="gen-icon-1">⏳</div>
+              <span style="font-size:14px; color:#ccc;">Identificando seu perfil muscular...</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;" id="gen-step-2">
+              <div style="width:28px; height:28px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;" id="gen-icon-2">⏳</div>
+              <span style="font-size:14px; color:#ccc;">Calculando frequência ideal de treino...</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;" id="gen-step-3">
+              <div style="width:28px; height:28px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;" id="gen-icon-3">⏳</div>
+              <span style="font-size:14px; color:#ccc;">Montando sequência de exercícios...</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;" id="gen-step-4">
+              <div style="width:28px; height:28px; border-radius:50%; background:#333; display:flex; align-items:center; justify-content:center; font-size:13px; flex-shrink:0;" id="gen-icon-4">⏳</div>
+              <span style="font-size:14px; color:#ccc;">Finalizando protocolo personalizado...</span>
+            </div>
+          </div>
+
+          <div style="background:#1a1a1a; border-radius:99px; height:8px; overflow:hidden; margin-bottom:8px;">
+            <div id="genFill" style="height:100%; width:0%; background:linear-gradient(90deg,#c0392b,#e74c3c); border-radius:99px; transition:width 0.6s ease;"></div>
+          </div>
+          <p id="genPct" style="font-size:13px; color:#aaa;">0%</p>
+        </div>
+      `;
+
+      const steps_gen = [
+        { id: 1, pct: 25 },
+        { id: 2, pct: 55 },
+        { id: 3, pct: 80 },
+        { id: 4, pct: 100 },
+      ];
+      let gi = 0;
+      function runGenStep() {
+        if (gi >= steps_gen.length) {
+          setTimeout(() => nextStep(), 600);
+          return;
+        }
+        const s = steps_gen[gi];
+        const icon = document.getElementById("gen-icon-" + s.id);
+        const fill = document.getElementById("genFill");
+        const pct = document.getElementById("genPct");
+        if (icon) icon.textContent = "✅";
+        if (fill) fill.style.width = s.pct + "%";
+        if (pct) pct.textContent = s.pct + "%";
+        gi++;
+        setTimeout(runGenStep, 1200);
+      }
+      setTimeout(runGenStep, 800);
+    }
+
     else if (step.type === "loading") {
       card.innerHTML = `
         <div class="loading-screen">
@@ -672,9 +741,6 @@
       document.getElementById("globalLogo").src = "BR_logo_dark_bg.webp";
       card.innerHTML = `
         <div style="text-align:center; margin-bottom:24px;">
-          <div style="display:inline-flex; align-items:center; gap:6px; background:#e05a47; color:#fde8e6; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:18px;">
-            ⚠️ ANÁLISE QUASE CONCLUÍDA
-          </div>
           <h2 style="font-size:22px; font-weight:800; line-height:1.35; margin-bottom:16px; color:#fff;">Identificamos o problema — e a boa notícia é que <span style="color:#c0392b;">tem solução</span></h2>
           <p style="font-size:14px; color:#ccc; line-height:1.7; margin-bottom:16px;">Com base nas suas respostas, seu corpo está mandando <strong style="color:#fff;">sinais claros de alerta</strong>. Ignorar isso vai piorar com o tempo — mas reverter é mais <strong style="color:#fff;">simples do que você imagina.</strong> Sem remédio, sem efeito colateral.</p>
           <img src="BR_img_erection_84.webp" alt="" style="width:100%; border-radius:12px; margin-bottom:12px;" />
@@ -810,13 +876,13 @@
     const step = steps[current];
     const btn = document.getElementById("stickyBtn");
     const inner = document.getElementById("stickyBtnInner");
-    if (step.type === "loading" || step.type === "result") {
+    if (step.type === "loading" || step.type === "result" || step.type === "generating" || step.type === "gencta") {
       btn.style.display = "none";
       return;
     }
     if (step.type === "midresult") {
       btn.style.display = "block";
-      inner.textContent = "Gerar um Protocolo Personalizado";
+      inner.textContent = "Ver meu plano personalizado";
       inner.disabled = false;
       return;
     }
@@ -881,6 +947,7 @@
       current++;
       saveState();
       renderStep();
+      window.scrollTo({ top: 0, behavior: "instant" });
     }
   }
 
