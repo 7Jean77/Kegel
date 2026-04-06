@@ -41,7 +41,7 @@
     }
     .progress-fill {
       height: 100%;
-      background: linear-gradient(90deg, #c0392b, #e74c3c);
+      background: linear-gradient(90deg, #1a6fa5, #2d8dd6);
       border-radius: 99px;
       transition: width 0.4s ease;
     }
@@ -63,7 +63,7 @@
     .badge {
       display: inline-block;
       background: #fdecea;
-      color: #c0392b;
+      color: #1a6fa5;
       font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.05em;
@@ -108,14 +108,14 @@
       text-align: left;
     }
     .option:hover {
-      border-color: #e74c3c;
-      background: #fff5f5;
+      border-color: #2d8dd6;
+      background: #eaf4fd;
       color: #111;
     }
     .option.selected {
-      border-color: #c0392b;
-      background: #fdecea;
-      color: #c0392b;
+      border-color: #1a6fa5;
+      background: #dbeeff;
+      color: #1a6fa5;
       font-weight: 600;
     }
 
@@ -148,19 +148,19 @@
       transition: all 0.2s;
     }
     .scale-btn:hover {
-      border-color: #e74c3c;
+      border-color: #2d8dd6;
       background: #fff5f5;
     }
     .scale-btn.selected {
-      border-color: #c0392b;
-      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      border-color: #1a6fa5;
+      background: linear-gradient(135deg, #1a6fa5, #2d8dd6);
       color: #fff;
     }
 
     /* Info card */
     .info-box {
       background: #fff5f5;
-      border-left: 4px solid #e74c3c;
+      border-left: 4px solid #2d8dd6;
       border-radius: 10px;
       padding: 16px 18px;
       margin-bottom: 24px;
@@ -177,7 +177,7 @@
     .stat-big .number {
       font-size: 64px;
       font-weight: 800;
-      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      background: linear-gradient(135deg, #1a6fa5, #2d8dd6);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -249,8 +249,8 @@
       content: "✓";
       width: 24px;
       height: 24px;
-      background: #fdecea;
-      color: #c0392b;
+      background: #dbeeff;
+      color: #1a6fa5;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -266,7 +266,7 @@
       padding: 16px;
       border: none;
       border-radius: 14px;
-      background: linear-gradient(135deg, #c0392b, #e74c3c);
+      background: linear-gradient(135deg, #1a6fa5, #2d8dd6);
       color: #fff;
       font-size: 16px;
       font-weight: 700;
@@ -304,7 +304,7 @@
       width: 56px;
       height: 56px;
       border: 4px solid #eee;
-      border-top-color: #c0392b;
+      border-top-color: #1a6fa5;
       border-radius: 50%;
       animation: spin 0.9s linear infinite;
       margin: 0 auto 32px;
@@ -329,7 +329,7 @@
     }
     .loading-bar-fill {
       height: 100%;
-      background: linear-gradient(90deg, #c0392b, #e74c3c);
+      background: linear-gradient(90deg, #1a6fa5, #2d8dd6);
       border-radius: 99px;
       width: 0%;
       transition: width 1.2s ease;
@@ -379,7 +379,7 @@
       padding: 16px 20px 8px;
       color: #111;
     }
-    .intro-title span { color: #c0392b; }
+    .intro-title span { color: #1a6fa5; }
     .intro-sub { font-size: 15px; color: #444; line-height: 1.6; text-align: center; padding: 0 8px 16px; }
     .intro-age-label {
       font-size: 16px;
@@ -415,7 +415,7 @@
 <body>
 <div id="stickyBtn" style="display:none; position:fixed; bottom:0; left:0; right:0; padding:12px 20px 20px; background:transparent; z-index:999;">
   <button class="btn" id="stickyBtnInner" style="max-width:480px; margin:0 auto; display:block;" onclick="stickyNext()">Continuar</button>
-  <p id="stickySubtext" style="display:none; text-align:center; font-size:12px; color:#888; margin-top:8px; max-width:480px; margin-left:auto; margin-right:auto;">Garantia 90 dias • Acesso imediato • R$19,90</p>
+  <p id="stickySubtext" style="display:none; text-align:center; font-size:12px; color:#888; margin-top:8px; max-width:480px; margin-left:auto; margin-right:auto;">Garantia 90 dias • Acesso imediato • R$29,90</p>
 </div>
 
 <div class="container">
@@ -431,7 +431,7 @@
     <p class="intro-sub">Existe um músculo que, quanto mais forte, mais dura e mais firme a ereção — com resultados equivalentes ao remédio, sem tomar um único comprimido. Responda 6 perguntas e descubra se o seu ainda pode ser recuperado.</p>
     <video class="intro-img" src="kling_intro_compressed.mp4" poster="poster_intro.jpg" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px;"></video>
     <div class="intro-body">
-      <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#c0392b,#e74c3c);" onclick="nextStep()">Iniciar o teste →</button>
+      <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="nextStep()">Iniciar o teste →</button>
       <div style="display:flex; justify-content:center; margin-top:16px;">
         <img class="intro-benefits-img" src="BR_benefits_anonimo.webp" alt="100% anônimo" width="375" height="189" loading="lazy" style="width:auto; height:auto; max-width:160px;" />
       </div>
@@ -531,7 +531,7 @@
     <p class="intro-sub">Existe um músculo que, quanto mais forte, mais dura e mais firme a ereção — com resultados equivalentes ao remédio, sem tomar um único comprimido. Responda 6 perguntas e descubra se o seu ainda pode ser recuperado.</p>
           <video class="intro-img" src="kling_intro_compressed.mp4" poster="poster_intro.jpg" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px;"></video>
           <div class="intro-body">
-            <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#c0392b,#e74c3c);" onclick="nextStep()">Iniciar o teste →</button>
+            <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="nextStep()">Iniciar o teste →</button>
             <div style="text-align:center; margin-top:16px;">
               <img class="intro-benefits-img" src="BR_benefits_anonimo.webp" alt="100% anônimo" width="375" height="189" loading="lazy" style="width:auto; height:auto; max-width:160px;" />
             </div>
@@ -609,7 +609,7 @@
       ` : "";
 
       card.innerHTML = `
-        ${step.badge ? `<div style="${step.darkbg ? 'text-align:center; margin-bottom:0;' : ''}"><div class="badge" style="${step.darkbg ? 'background:#c0392b; color:#fff; display:inline-block; padding:3px 10px; border-radius:6px; font-size:11px;' : ''}">${step.badge}</div></div>` : ""}
+        ${step.badge ? `<div style="${step.darkbg ? 'text-align:center; margin-bottom:0;' : ''}"><div class="badge" style="${step.darkbg ? 'background:#1a6fa5; color:#fff; display:inline-block; padding:3px 10px; border-radius:6px; font-size:11px;' : ''}">${step.badge}</div></div>` : ""}
         ${step.pretitle ? `<p style="font-size:17px; font-weight:700; color:${step.darkbg ? '#ccc' : '#888'}; margin-bottom:8px; line-height:1.5; text-align:center;">${step.pretitle}</p>` : ""}
         ${step.pretitleSub ? `<p style="font-size:14px; color:${step.darkbg ? '#aaa' : '#666'}; margin-bottom:16px; line-height:1.5; text-align:center;">${step.pretitleSub}</p>` : ""}
         ${step.pretitleImg ? `<img src="${step.pretitleImg}" style="width:100%; border-radius:12px; margin-bottom:16px;" />` : ""}
@@ -625,7 +625,7 @@
       document.getElementById("globalLogo").src = "BR_logo_white_bg.webp";
       card.innerHTML = `
         <div style="text-align:center; padding:16px 0;">
-          <div style="display:inline-flex; align-items:center; gap:6px; background:#e05a47; color:#fde8e6; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:20px;">
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#2478b5; color:#e8f4fd; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:20px;">
             ✦ ANÁLISE CONCLUÍDA
           </div>
           <h2 style="font-size:22px; font-weight:800; color:#111; line-height:1.35; margin-bottom:12px;">Suas respostas foram analisadas com sucesso</h2>
@@ -640,7 +640,7 @@
       document.getElementById("globalLogo").src = "BR_logo_white_bg.webp";
       card.innerHTML = `
         <div style="text-align:center; padding:16px 0;">
-          <div style="display:inline-flex; align-items:center; gap:6px; background:#e05a47; color:#fde8e6; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:24px;">
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#2478b5; color:#e8f4fd; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:24px;">
             ⚙️ GERANDO SEU PROTOCOLO
           </div>
           <h2 style="font-size:20px; font-weight:800; color:#111; line-height:1.4; margin-bottom:8px;">Analisando suas respostas e<br>criando seu protocolo personalizado...</h2>
@@ -666,7 +666,7 @@
           </div>
 
           <div style="background:#e5e5e5; border-radius:99px; height:8px; overflow:hidden; margin-bottom:8px;">
-            <div id="genFill" style="height:100%; width:0%; background:linear-gradient(90deg,#c0392b,#e74c3c); border-radius:99px; transition:width 0.6s ease;"></div>
+            <div id="genFill" style="height:100%; width:0%; background:linear-gradient(90deg,#1a6fa5,#2d8dd6); border-radius:99px; transition:width 0.6s ease;"></div>
           </div>
           <p id="genPct" style="font-size:13px; color:#888;">0%</p>
         </div>
@@ -757,10 +757,10 @@
 
       card.innerHTML = `
         <div style="text-align:center; margin-bottom:20px;">
-          <div style="display:inline-flex; align-items:center; gap:6px; background:#e05a47; color:#fde8e6; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:18px; border:1px solid #f5c0b8;">
+          <div style="display:inline-flex; align-items:center; gap:6px; background:#2478b5; color:#e8f4fd; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:18px; border:1px solid #a9cce3;">
             <span>✦</span> Seu plano está pronto!
           </div>
-          <h2 class="result-headline" style="font-size:22px; font-weight:800; line-height:1.35; text-align:center; margin-bottom:12px;">Confirmado: seu músculo ainda pode ser <span style="color:#c0392b;">recuperado</span><br>— e você não precisa de <span style="color:#c0392b;">nenhum remédio</span> pra isso</h2>
+          <h2 class="result-headline" style="font-size:22px; font-weight:800; line-height:1.35; text-align:center; margin-bottom:12px;">Confirmado: seu músculo ainda pode ser <span style="color:#1a6fa5;">recuperado</span><br>— e você não precisa de <span style="color:#1a6fa5;">nenhum remédio</span> pra isso</h2>
           <p style="font-size:14px; color:#666; text-align:center; line-height:1.6;">Identificamos exatamente o que está travando o seu desempenho. <strong style="font-weight:900; color:#333;">Homens com esse perfil reverteram o problema em até 5 semanas</strong> seguindo esse método</p>
           <button class="btn btn-pulse-green" style="margin-top:20px; letter-spacing:0.05em; font-size:15px; padding:16px 24px; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="document.getElementById('mainPricingBlock').scrollIntoView({behavior:'smooth', block:'center'});">COMEÇAR MEU PLANO AGORA →</button>
           <p style="font-size:12px; color:#aaa; margin-top:8px; font-weight:700;">Garantia 90 dias • Acesso imediato</p>
@@ -795,12 +795,12 @@
         <div id="mainPricingBlock" style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-bottom:24px; border:1px solid #888;">
           <p style="font-size:15px; font-weight:800; color:#111; line-height:1.4; margin-bottom:12px;">⚡ Você está a um clique de recuperar<br>sua performance de verdade</p>
           <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;">
-            <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 47,00</span>
-            <span style="background:#e74c3c; color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:99px;">58% OFF</span>
+            <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 67,00</span>
+            <span style="background:#2d8dd6; color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:99px;">55% OFF</span>
           </div>
           <p style="font-size:14px; color:#555; margin-bottom:2px;">por apenas</p>
-          <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">19</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
-          <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 0,70 por dia pra voltar a ser o homem que ela quer</p>
+          <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">29</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
+          <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 1,00 por dia pra voltar a ser o homem que ela quer</p>
           <button id="mainCta" class="btn btn-pulse-green" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="window.location.href='https://checkout.g4agency.com.br/VCCL1O8SCVWV'">COMEÇAR MEU PLANO AGORA →</button>
           <p style="font-size:12px; color:#666; font-weight:600;">✓ Garantia 90 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
         </div>
@@ -847,19 +847,19 @@
           <div style="text-align:left;">
             <p style="font-size:15px; font-weight:800; color:#111; margin-bottom:6px;">Garantia de 90 Dias de Devolução</p>
             <p style="font-size:12px; color:#555; line-height:1.5; margin-bottom:6px;">Se em 90 dias você não estiver satisfeito com os resultados, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
-            <p style="font-size:13px; font-weight:700; color:#e74c3c;">Risco zero. Resultados garantido.</p>
+            <p style="font-size:13px; font-weight:700; color:#2d8dd6;">Risco zero. Resultados garantido.</p>
           </div>
         </div>
 
         <div style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-top:8px; margin-bottom:16px; border:1px solid #888;">
           <p style="font-size:15px; font-weight:800; color:#111; line-height:1.4; margin-bottom:12px;">⚡ Você está a um clique de recuperar<br>sua performance de verdade</p>
           <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;">
-            <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 47,00</span>
-            <span style="background:#e74c3c; color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:99px;">58% OFF</span>
+            <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 67,00</span>
+            <span style="background:#2d8dd6; color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:99px;">55% OFF</span>
           </div>
           <p style="font-size:14px; color:#555; margin-bottom:2px;">por apenas</p>
-          <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">19</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
-          <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 0,70 por dia pra voltar a ser o homem que ela quer</p>
+          <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">29</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
+          <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 1,00 por dia pra voltar a ser o homem que ela quer</p>
           <button class="btn btn-pulse-green" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px; background:linear-gradient(135deg,#16a34a,#22c55e);" onclick="window.location.href='https://checkout.g4agency.com.br/VCCL1O8SCVWV'">COMEÇAR MEU PLANO AGORA →</button>
           <p style="font-size:12px; color:#666; font-weight:600;">✓ Garantia 90 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
         </div>
