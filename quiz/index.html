@@ -396,6 +396,9 @@
       letter-spacing: 0.02em !important;
       border-radius: 12px;
     }
+    .p5-headline {
+      font-size: 18px !important;
+    }
   }
   @media (min-width: 600px) {
     .result-headline {
@@ -436,8 +439,10 @@
     <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:5%"></div></div>
   </div>
   <div id="card"><div class="intro-screen">
-    <h1 class="intro-title">A Cura Permanente Para <span>Disfunção Erétil</span> <span style="color:#111;">é Gratuita</span> — Por Isso a Indústria do Viagra Fatura <span>R$4 Bilhões</span> Garantindo Que Você <span>Nunca</span> Descubra Isso</h1>
-    <p class="intro-sub">Existe um músculo que, quanto mais forte, mais dura e mais firme a ereção — com resultados equivalentes ao remédio, sem tomar um único comprimido. Responda 4 perguntas e descubra se o seu ainda pode ser recuperado.</p>
+    <h1 class="intro-title">A Cura Para <span>Disfunção Erétil</span> <span style="color:#111;">é Gratuita</span></h1>
+    <p style="font-size:15px; color:#444; text-align:center; margin-top:-8px; margin-bottom:8px; line-height:1.6; padding: 0 8px;">Por isso a indústria do Viagra gasta <strong style="color:#111;">R$4 bilhões</strong> garantindo que você <strong style="color:#111;">nunca</strong> descubra isso</p>
+    <p class="intro-sub">Existe um músculo que, quanto mais forte, <strong style="color:#111;">mais dura e mais firme a ereção</strong> — com <strong style="color:#111;">resultados equivalentes ao remédio</strong>, sem tomar <strong style="color:#111;">um único comprimido</strong>.</p>
+    <p class="intro-sub"><strong style="color:#111;">→ Responda 4 perguntas e descubra se o seu ainda pode ser recuperado.</strong></p>
     <video class="intro-img" src="kling_intro_compressed.mp4" poster="poster_intro.jpg" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px;"></video>
     <div class="intro-body">
       <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="nextStep()">Iniciar o teste →</button>
@@ -534,8 +539,10 @@
       card.className = "";
       card.innerHTML = `
         <div class="intro-screen">
-          <h1 class="intro-title">A Cura Permanente Para <span>Disfunção Erétil</span> <span style="color:#111;">é Gratuita</span> — Por Isso a Indústria do Viagra Fatura <span>R$4 Bilhões</span> Garantindo Que Você <span>Nunca</span> Descubra Isso</h1>
-    <p class="intro-sub">Existe um músculo que, quanto mais forte, mais dura e mais firme a ereção — com resultados equivalentes ao remédio, sem tomar um único comprimido. Responda 4 perguntas e descubra se o seu ainda pode ser recuperado.</p>
+          <h1 class="intro-title">A Cura Para <span>Disfunção Erétil</span> <span style="color:#111;">é Gratuita</span></h1>
+    <p style="font-size:15px; color:#444; text-align:center; margin-top:-8px; margin-bottom:8px; line-height:1.6; padding: 0 8px;">Por isso a indústria do Viagra gasta <strong style="color:#111;">R$4 bilhões</strong> garantindo que você <strong style="color:#111;">nunca</strong> descubra isso</p>
+    <p class="intro-sub">Existe um músculo que, quanto mais forte, <strong style="color:#111;">mais dura e mais firme a ereção</strong> — com <strong style="color:#111;">resultados equivalentes ao remédio</strong>, sem tomar <strong style="color:#111;">um único comprimido</strong>.</p>
+    <p class="intro-sub"><strong style="color:#111;">→ Responda 4 perguntas e descubra se o seu ainda pode ser recuperado.</strong></p>
           <video class="intro-img" src="kling_intro_compressed.mp4" poster="poster_intro.jpg" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px;"></video>
           <div class="intro-body">
             <button class="btn" style="width:100%; font-size:16px; padding:16px 24px; letter-spacing:0.05em; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="nextStep()">Iniciar o teste →</button>
@@ -767,11 +774,12 @@
           <div style="display:inline-flex; align-items:center; gap:6px; background:#2478b5; color:#e8f4fd; font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; padding:7px 16px; border-radius:99px; margin-bottom:18px; border:1px solid #a9cce3;">
             <span>✦</span> Seu plano está pronto!
           </div>
-          <h2 class="result-headline" style="font-size:22px; font-weight:800; line-height:1.35; text-align:center; margin-bottom:12px;"><span style="color:#1a6fa5;">Ereção fraca</span> e <span style="color:#1a6fa5;">ejaculação precoce</span> têm a mesma causa: um músculo atrofiado.<br><span style="font-size:17px; font-weight:600; color:#555;">Não é doença. É falta de treino específico.</span></h2>
-          <p style="font-size:16px; font-weight:800; color:#111; text-align:center; line-height:1.6; margin-bottom:4px;">O Protocolo P5 corrige isso. 5 exercícios. 5 minutos por dia.</p>
+          <h2 class="result-headline" style="font-size:22px; font-weight:800; line-height:1.35; text-align:center; margin-bottom:12px;"><span style="color:#1a6fa5;">Ereção fraca</span> e <span style="color:#1a6fa5;">ejaculação precoce</span> têm a mesma causa: um músculo atrofiado.<br><span style="font-size:16px; font-weight:400; color:#444;">Não é doença. É falta de treino específico.</span></h2>
+          <hr style="border:none; border-top:1px solid #e0e0e0; margin:16px 0;" />
+          <p class="p5-headline" style="font-size:22px; font-weight:800; color:#111; text-align:center; line-height:1.35; margin-bottom:4px;">O Protocolo P5 corrige isso.<br><span style="color:#1a6fa5;">5 exercícios. 5 minutos por dia.</span></p>
           <p style="font-size:14px; color:#666; text-align:center; line-height:1.6;">Baseado no mesmo princípio da reabilitação clínica masculina — feito em casa, <strong style="color:#111;">sem ninguém saber.</strong></p>
           <button class="btn btn-pulse-green" style="margin-top:20px; letter-spacing:0.05em; font-size:15px; padding:16px 24px; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="document.getElementById('mainPricingBlock').scrollIntoView({behavior:'smooth', block:'center'});">ACESSAR O PROTOCOLO P5 →</button>
-          <p style="font-size:12px; color:#aaa; margin-top:8px; font-weight:700;">Garantia 90 dias • Acesso imediato</p>
+          <p style="font-size:12px; color:#444; margin-top:8px; font-weight:800;">Garantia 90 dias • Acesso imediato</p>
         </div>
 
         <video src="BR_video_graph_pp2.mp4" poster="poster_video_graph.webp" autoplay loop muted playsinline preload="auto" style="width:100%; border-radius:12px; margin-bottom:16px;"></video>
@@ -789,16 +797,16 @@
         </ul>
 
         <div id="mainPricingBlock" style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-bottom:24px; border:1px solid #888;">
-          <p style="font-size:15px; font-weight:800; color:#111; line-height:1.4; margin-bottom:12px;">⚡ Você está a um clique de recuperar<br>sua performance de verdade</p>
+
           <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;">
             <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 67,00</span>
             <span style="background:#2d8dd6; color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:99px;">55% OFF</span>
           </div>
-          <p style="font-size:14px; color:#555; margin-bottom:2px;">por apenas</p>
+
           <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">29</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
           <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 1,00 por dia pra voltar a ser o homem que ela quer</p>
           <button id="mainCta" class="btn btn-pulse-green" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="window.location.href='https://checkout.g4agency.com.br/VCCL1O8SCVWV'">ACESSAR O PROTOCOLO P5 →</button>
-          <p style="font-size:12px; color:#666; font-weight:600;">✓ Garantia 90 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
+          <p style="font-size:12px; color:#111; font-weight:800; color:#444;">✓ Garantia 90 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
         </div>
 
         <p style="font-size:15px; font-weight:700; color:#111; margin-bottom:12px;">O que homens como você estão dizendo:</p>
@@ -848,16 +856,16 @@
         </div>
 
         <div style="background:#fafafa; border-radius:16px; padding:24px 20px; text-align:center; margin-top:8px; margin-bottom:16px; border:1px solid #888;">
-          <p style="font-size:15px; font-weight:800; color:#111; line-height:1.4; margin-bottom:12px;">⚡ Você está a um clique de recuperar<br>sua performance de verdade</p>
+
           <div style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:6px;">
             <span style="font-size:16px; color:#999; text-decoration:line-through;">R$ 67,00</span>
             <span style="background:#2d8dd6; color:#fff; font-size:12px; font-weight:700; padding:3px 10px; border-radius:99px;">55% OFF</span>
           </div>
-          <p style="font-size:14px; color:#555; margin-bottom:2px;">por apenas</p>
+
           <p style="margin-bottom:8px;"><span style="font-size:22px; font-weight:800; color:#111;">R$</span><span style="font-size:52px; font-weight:900; color:#111; line-height:1;">29</span><span style="font-size:22px; font-weight:800; color:#111;">,90</span></p>
           <p style="font-size:13px; color:#888; margin-bottom:16px;">Menos de R$ 1,00 por dia pra voltar a ser o homem que ela quer</p>
           <button class="btn btn-pulse-green" style="width:100%; letter-spacing:0.05em; font-size:15px; padding:16px 24px; margin-bottom:10px; background:linear-gradient(135deg,#1a6fa5,#2d8dd6);" onclick="window.location.href='https://checkout.g4agency.com.br/VCCL1O8SCVWV'">ACESSAR O PROTOCOLO P5 →</button>
-          <p style="font-size:12px; color:#666; font-weight:600;">✓ Garantia 90 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
+          <p style="font-size:12px; color:#111; font-weight:800; color:#444;">✓ Garantia 90 dias &nbsp;•&nbsp; ✓ Acesso vitalício</p>
         </div>
 
         <p class="note" style="margin-bottom:80px;">*Estatísticas de pesquisa interna · Equipamento: não necessário</p>
