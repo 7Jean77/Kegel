@@ -1,0 +1,1513 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Redespertar — Diagnóstico Espiritual</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --navy: #1B2A4A;
+      --gold: #C9A84C;
+      --cream: #F5F0E8;
+      --warm-white: #FDFBF7;
+      --text-dark: #2C2C2C;
+      --text-mid: #555555;
+      --text-light: #888888;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100%;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    /* ── Screen system ── */
+    .screen {
+      display: none;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 300ms ease, transform 300ms ease;
+      min-height: 100vh;
+    }
+
+    .screen.active {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .screen.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ══════════════════════════════
+       TELA 0 — INTRODUÇÃO
+    ══════════════════════════════ */
+    #screen-intro {
+      background: var(--navy);
+      align-items: center;
+      justify-content: center;
+      padding: 48px 24px;
+      text-align: center;
+    }
+
+    .intro-inner {
+      max-width: 520px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .intro-cross {
+      margin-bottom: 4px;
+    }
+
+    .intro-title {
+      font-family: 'Lora', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1.35;
+    }
+
+    .intro-subtitle {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255, 255, 255, 0.70);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .btn-start {
+      background: var(--gold);
+      color: var(--navy);
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: filter 200ms ease, transform 150ms ease;
+      letter-spacing: 0.01em;
+    }
+
+    .btn-start:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .btn-start:active {
+      transform: translateY(0);
+    }
+
+    .intro-timing {
+      font-size: 12px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.40);
+      margin-top: -8px;
+    }
+
+    /* ══════════════════════════════
+       TELAS 1-4 — PERGUNTAS
+    ══════════════════════════════ */
+    .screen-question {
+      background: var(--warm-white);
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Progress bar */
+    .progress-bar-wrap {
+      width: 100%;
+      background: var(--cream);
+      height: 4px;
+      position: relative;
+      flex-shrink: 0;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 0 2px 2px 0;
+      transition: width 400ms ease;
+    }
+
+    .progress-label {
+      position: absolute;
+      right: 20px;
+      top: 10px;
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-light);
+    }
+
+    .question-body {
+      width: 100%;
+      max-width: 560px;
+      margin: 0 auto;
+      padding: 48px 24px 40px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+    }
+
+    .question-text {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      text-align: center;
+      line-height: 1.45;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-card {
+      background: #ffffff;
+      border: 1.5px solid #E8E0D0;
+      border-radius: 10px;
+      padding: 14px 18px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-dark);
+      transition: border-color 180ms ease, background 180ms ease, color 180ms ease;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+
+    .option-card:hover {
+      border-color: var(--gold);
+      background: #FFFDF5;
+    }
+
+    .option-card.selected {
+      border-color: var(--navy);
+      background: #F0F4FA;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .option-emoji {
+      font-size: 20px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    /* ══════════════════════════════
+       TELA 5 — ANÁLISE
+    ══════════════════════════════ */
+    #screen-analysis {
+      background: var(--navy);
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .analysis-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.22);
+      padding: 40px 32px 32px;
+      max-width: 440px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Barra de progresso animada no topo do card */
+    .analysis-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #E8E0D0;
+    }
+
+    .analysis-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--gold);
+      border-radius: 0 2px 2px 0;
+      animation: analysisLoad 1.6s ease-out forwards;
+    }
+
+    @keyframes analysisLoad {
+      0%   { width: 0%; }
+      40%  { width: 60%; }
+      70%  { width: 80%; }
+      100% { width: 100%; }
+    }
+
+    .analysis-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      color: #ffffff;
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 6px 14px;
+      text-transform: uppercase;
+    }
+
+    .analysis-tag-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    .analysis-title {
+      font-family: 'Lora', serif;
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.4;
+    }
+
+    .analysis-subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--text-mid);
+      line-height: 1.65;
+      max-width: 340px;
+    }
+
+    .analysis-divider {
+      width: 48px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .btn-analysis {
+      width: 100%;
+      padding: 15px;
+      background: var(--navy);
+      color: #ffffff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 200ms ease, color 200ms ease, transform 150ms ease;
+      letter-spacing: 0.01em;
+      opacity: 0;
+      animation: fadeInUp 400ms ease 1.5s forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn-analysis:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .analysis-note {
+      font-size: 11px;
+      font-weight: 400;
+      color: var(--text-light);
+      opacity: 0;
+      animation: fadeInUp 400ms ease 1.7s forwards;
+    }
+
+    @media (max-width: 480px) {
+      .analysis-card {
+        padding: 36px 20px 28px;
+      }
+      .analysis-title {
+        font-size: 19px;
+      }
+    }
+
+    /* ══════════════════════════════
+       TELA 6 — CARREGAMENTO
+    ══════════════════════════════ */
+    #screen-loading {
+      background: var(--cream);
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+    }
+
+    .loading-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 6px 32px rgba(0, 0, 0, 0.09);
+      padding: 36px 32px 32px;
+      max-width: 440px;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .loading-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      color: #ffffff;
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 7px 16px;
+      text-transform: uppercase;
+    }
+
+    .loading-badge-spin {
+      display: inline-block;
+      animation: rotateSpin 2s linear infinite;
+    }
+
+    @keyframes rotateSpin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .loading-title {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.45;
+    }
+
+    .loading-subtitle {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--gold);
+      margin-top: -8px;
+    }
+
+    .loading-steps {
+      list-style: none;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      text-align: left;
+    }
+
+    .loading-step {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #C8C0B4;
+      transition: color 300ms ease;
+    }
+
+    .loading-step.step-active {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .loading-step.step-done {
+      color: var(--text-mid);
+    }
+
+    .step-icon {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      border: 1.5px solid #E0D8CE;
+      background: #f7f5f2;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      transition: background 300ms ease, border-color 300ms ease;
+    }
+
+    .step-done .step-icon {
+      background: #E8F5E9;
+      border-color: #81C784;
+    }
+
+    .step-done .step-icon::after {
+      content: '✓';
+      font-weight: 700;
+      color: #2E7D32;
+      font-size: 13px;
+    }
+
+    .step-active .step-icon {
+      background: #FFF8EC;
+      border-color: var(--gold);
+    }
+
+    .step-active .step-icon::after {
+      content: '⏳';
+      font-size: 12px;
+      animation: wobble 0.9s ease-in-out infinite;
+    }
+
+    .step-pending .step-icon::after {
+      content: '';
+    }
+
+    @keyframes wobble {
+      0%, 100% { transform: rotate(0deg); }
+      30%  { transform: rotate(-12deg); }
+      70%  { transform: rotate(12deg); }
+    }
+
+    .loading-bar-wrap {
+      width: 100%;
+      height: 8px;
+      background: #EDE8DF;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .loading-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--navy) 0%, var(--gold) 100%);
+      border-radius: 4px;
+      transition: width 120ms linear;
+    }
+
+    .loading-percent {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-light);
+      margin-top: -8px;
+    }
+
+    @media (max-width: 480px) {
+      .loading-card {
+        padding: 28px 20px 24px;
+      }
+      .loading-title {
+        font-size: 18px;
+      }
+    }
+
+    /* ══════════════════════════════
+       TELA 7 — RESULTADO (SALES PAGE)
+    ══════════════════════════════ */
+    #screen-result {
+      background: var(--warm-white);
+      flex-direction: column;
+      align-items: center;
+      padding: 0 0 64px;
+    }
+
+    .result-page {
+      max-width: 560px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 40px 24px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    /* Top badge */
+    .result-top-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: #fff;
+      background: var(--gold);
+      border-radius: 20px;
+      padding: 7px 18px;
+      text-transform: uppercase;
+      margin-bottom: 22px;
+    }
+
+    /* Dynamic headline */
+    .result-headline {
+      font-family: 'Lora', serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.35;
+      margin-bottom: 14px;
+    }
+
+    .result-hook {
+      font-size: 14px;
+      color: var(--text-mid);
+      font-style: italic;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    /* Solution block */
+    .result-solution-block {
+      margin-bottom: 28px;
+    }
+
+    .result-solution-title {
+      font-family: 'Lora', serif;
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .result-solution-title em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .result-solution-desc {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* CTA block */
+    .result-cta-block {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+
+    .btn-result-cta {
+      display: block;
+      width: 100%;
+      padding: 17px;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      transition: background 200ms, color 200ms;
+    }
+
+    .btn-result-cta:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .result-cta-trust {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    /* Journey visual */
+    .result-journey-card {
+      width: 100%;
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px 16px 14px;
+      margin-bottom: 36px;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.06);
+    }
+
+    .result-journey-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      text-align: left;
+    }
+
+    /* Stat block */
+    .result-stat-block {
+      margin-bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .result-stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 76px;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .result-stat-text {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.65;
+      max-width: 360px;
+    }
+
+    .result-stat-text strong {
+      color: var(--navy);
+      display: block;
+      margin-top: 4px;
+    }
+
+    /* Benefits */
+    .result-benefits-block {
+      width: 100%;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .result-benefits-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 14px;
+    }
+
+    .result-benefits-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .result-benefits-list li {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 14px;
+      color: var(--text-dark);
+    }
+
+    .benefit-check {
+      width: 22px;
+      height: 22px;
+      background: var(--navy);
+      border-radius: 5px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* Price box */
+    .price-box {
+      width: 100%;
+      background: #fff;
+      border: 1.5px solid #E8E0D0;
+      border-radius: 12px;
+      padding: 28px 24px;
+      margin-bottom: 36px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.07);
+    }
+
+    .price-top-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .price-from {
+      font-size: 14px;
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+
+    .price-off-badge {
+      font-size: 11px;
+      font-weight: 700;
+      color: #fff;
+      background: #C0392B;
+      border-radius: 4px;
+      padding: 3px 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .price-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 2px;
+      line-height: 1;
+    }
+
+    .price-currency {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 10px;
+    }
+
+    .price-integer {
+      font-family: 'Poppins', sans-serif;
+      font-size: 60px;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1;
+    }
+
+    .price-cents {
+      font-family: 'Poppins', sans-serif;
+      font-size: 26px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-top: 12px;
+    }
+
+    .price-sub {
+      font-size: 12px;
+      color: var(--text-mid);
+      text-align: center;
+      max-width: 320px;
+    }
+
+    .price-guarantees {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    /* Testimonials */
+    .testimonials-block {
+      width: 100%;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .testimonials-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 16px;
+    }
+
+    .testimonial-card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+    }
+
+    .testimonial-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .testimonial-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--navy);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .testimonial-avatar.av2 { background: #4A7C6F; }
+    .testimonial-avatar.av3 { background: #7C4A6A; }
+
+    .testimonial-name {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .testimonial-info {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 1px;
+    }
+
+    .testimonial-stars {
+      color: #F59E0B;
+      font-size: 12px;
+      letter-spacing: 1px;
+      margin-top: 2px;
+    }
+
+    .testimonial-text {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.65;
+    }
+
+    /* Guarantee box */
+    .guarantee-box {
+      width: 100%;
+      background: #fff;
+      border: 1.5px solid #E8E0D0;
+      border-radius: 12px;
+      padding: 22px 20px;
+      margin-bottom: 32px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      text-align: left;
+    }
+
+    .guarantee-icon {
+      width: 72px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .guarantee-icon img {
+      width: 100%;
+      display: block;
+    }
+
+    .guarantee-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+
+    .guarantee-text {
+      font-size: 13px;
+      color: var(--text-mid);
+      line-height: 1.65;
+      margin-bottom: 6px;
+    }
+
+    .guarantee-tag {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    /* Disclaimer */
+    .result-disclaimer {
+      font-size: 11px;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: 16px;
+      font-style: italic;
+      padding: 0 8px;
+    }
+
+    /* ══════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════ */
+    @media (max-width: 480px) {
+      .intro-title {
+        font-size: 22px;
+      }
+
+      .question-text {
+        font-size: 18px;
+      }
+
+      .question-body {
+        padding: 36px 20px 32px;
+      }
+
+      .result-headline {
+        font-size: 21px;
+      }
+
+      .result-solution-title {
+        font-size: 18px;
+      }
+
+      .result-stat-number {
+        font-size: 60px;
+      }
+
+      .price-integer {
+        font-size: 50px;
+      }
+
+      .result-page {
+        padding: 32px 20px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════ TELA 0 — INTRODUÇÃO ══════════════ -->
+  <section id="screen-intro" class="screen">
+    <div class="intro-inner">
+      <div class="intro-cross">
+        <svg width="32" height="40" viewBox="0 0 32 40" aria-hidden="true">
+          <line x1="16" y1="0" x2="16" y2="40" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+          <line x1="2" y1="14" x2="30" y2="14" stroke="#C9A84C" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h1 class="intro-title">Descubra o que está impedindo sua fé de crescer</h1>
+      <p class="intro-subtitle">Responda 4 perguntas e receba seu diagnóstico espiritual personalizado</p>
+      <button class="btn-start" onclick="showScreen(1)">Começar meu diagnóstico →</button>
+      <p class="intro-timing">⏱ Menos de 2 minutos</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 1 — PERGUNTA 1 ══════════════ -->
+  <section id="screen-q1" class="screen screen-question">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 25%"></div>
+      <span class="progress-label">Pergunta 1 de 4</span>
+    </div>
+    <div class="question-body">
+      <h2 class="question-text">Como você descreveria sua vida de fé hoje?</h2>
+      <div class="options-list" id="options-q1">
+        <div class="option-card" onclick="selectOption(1, 'acesa', this)">
+          <span class="option-emoji">🔥</span>
+          <span>Está acesa, mas quero ir mais fundo</span>
+        </div>
+        <div class="option-card" onclick="selectOption(1, 'morna', this)">
+          <span class="option-emoji">🌥️</span>
+          <span>Está morna — perdeu a intensidade de antes</span>
+        </div>
+        <div class="option-card" onclick="selectOption(1, 'fria', this)">
+          <span class="option-emoji">❄️</span>
+          <span>Está fria há um tempo, e eu sinto falta de Deus</span>
+        </div>
+        <div class="option-card" onclick="selectOption(1, 'perdida', this)">
+          <span class="option-emoji">😶</span>
+          <span>Não sei bem onde estou espiritualmente</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 2 — PERGUNTA 2 ══════════════ -->
+  <section id="screen-q2" class="screen screen-question">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 50%"></div>
+      <span class="progress-label">Pergunta 2 de 4</span>
+    </div>
+    <div class="question-body">
+      <h2 class="question-text">Qual é o seu maior desafio espiritual agora?</h2>
+      <div class="options-list" id="options-q2">
+        <div class="option-card" onclick="selectOption(2, 'disciplina', this)">
+          <span class="option-emoji">📵</span>
+          <span>Falta de tempo e disciplina para orar e ler a Bíblia</span>
+        </div>
+        <div class="option-card" onclick="selectOption(2, 'distancia', this)">
+          <span class="option-emoji">😔</span>
+          <span>Sinto que Deus está distante de mim</span>
+        </div>
+        <div class="option-card" onclick="selectOption(2, 'constancia', this)">
+          <span class="option-emoji">🔄</span>
+          <span>Já tentei mudar, mas não consigo manter constância</span>
+        </div>
+        <div class="option-card" onclick="selectOption(2, 'duvidas', this)">
+          <span class="option-emoji">💭</span>
+          <span>Tenho muitas dúvidas e incertezas sobre a fé</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 3 — PERGUNTA 3 ══════════════ -->
+  <section id="screen-q3" class="screen screen-question">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 75%"></div>
+      <span class="progress-label">Pergunta 3 de 4</span>
+    </div>
+    <div class="question-body">
+      <h2 class="question-text">O que você mais quer nos próximos 30 dias?</h2>
+      <div class="options-list" id="options-q3">
+        <div class="option-card" onclick="selectOption(3, 'fogo', this)">
+          <span class="option-emoji">💪</span>
+          <span>Recuperar o fogo e a intimidade com Deus</span>
+        </div>
+        <div class="option-card" onclick="selectOption(3, 'paz', this)">
+          <span class="option-emoji">🧘</span>
+          <span>Ter mais paz, clareza e direção na vida</span>
+        </div>
+        <div class="option-card" onclick="selectOption(3, 'crescer', this)">
+          <span class="option-emoji">📚</span>
+          <span>Entender a Bíblia e crescer espiritualmente</span>
+        </div>
+        <div class="option-card" onclick="selectOption(3, 'oracao', this)">
+          <span class="option-emoji">🙏</span>
+          <span>Construir uma rotina de oração consistente</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 4 — PERGUNTA 4 ══════════════ -->
+  <section id="screen-q4" class="screen screen-question">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" style="width: 100%"></div>
+      <span class="progress-label">Pergunta 4 de 4</span>
+    </div>
+    <div class="question-body">
+      <h2 class="question-text">Se você tivesse um guia de 30 dias para renovar sua fé, você se comprometeria?</h2>
+      <div class="options-list" id="options-q4">
+        <div class="option-card" onclick="selectOption(4, 'pronto', this)">
+          <span class="option-emoji">🙋</span>
+          <span>Sim, estou pronto(a) para começar agora</span>
+        </div>
+        <div class="option-card" onclick="selectOption(4, 'talvez', this)">
+          <span class="option-emoji">🤔</span>
+          <span>Provavelmente sim, se for algo prático</span>
+        </div>
+        <div class="option-card" onclick="selectOption(4, 'medo', this)">
+          <span class="option-emoji">⏳</span>
+          <span>Quero muito, mas tenho medo de não conseguir manter</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 5 — ANÁLISE ══════════════ -->
+  <section id="screen-analysis" class="screen">
+    <div class="analysis-card">
+      <div class="analysis-progress">
+        <div class="analysis-progress-fill" id="analysis-bar"></div>
+      </div>
+
+      <span class="analysis-tag">
+        <span class="analysis-tag-dot"></span>
+        Análise concluída
+      </span>
+
+      <h2 class="analysis-title">Suas respostas foram analisadas com sucesso</h2>
+
+      <div class="analysis-divider"></div>
+
+      <p class="analysis-subtitle">
+        Com base no seu perfil, criamos uma jornada espiritual 100% personalizada para onde você está agora.
+      </p>
+
+      <button class="btn-analysis" onclick="showScreen(6)">Gerar meu diagnóstico espiritual →</button>
+
+      <p class="analysis-note">Gratuito · Resultado imediato · Sem compromisso</p>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 6 — CARREGAMENTO ══════════════ -->
+  <section id="screen-loading" class="screen">
+    <div class="loading-card">
+      <span class="loading-badge">
+        <span class="loading-badge-spin">✦</span>
+        Gerando seu diagnóstico
+      </span>
+
+      <h2 class="loading-title">Analisando suas respostas e preparando sua jornada espiritual...</h2>
+      <p class="loading-subtitle">Isso leva apenas alguns segundos</p>
+
+      <ul class="loading-steps">
+        <li class="loading-step step-pending" id="lstep-1">
+          <span class="step-icon"></span>
+          <span>Identificando seu perfil espiritual...</span>
+        </li>
+        <li class="loading-step step-pending" id="lstep-2">
+          <span class="step-icon"></span>
+          <span>Mapeando seus desafios de fé...</span>
+        </li>
+        <li class="loading-step step-pending" id="lstep-3">
+          <span class="step-icon"></span>
+          <span>Personalizando sua jornada de 30 dias...</span>
+        </li>
+        <li class="loading-step step-pending" id="lstep-4">
+          <span class="step-icon"></span>
+          <span>Finalizando seu diagnóstico espiritual...</span>
+        </li>
+      </ul>
+
+      <div class="loading-bar-wrap">
+        <div class="loading-bar-fill" id="loading-bar-fill"></div>
+      </div>
+      <span class="loading-percent" id="loading-percent">0%</span>
+    </div>
+  </section>
+
+  <!-- ══════════════ TELA 7 — RESULTADO ══════════════ -->
+  <section id="screen-result" class="screen">
+    <div class="result-page">
+
+      <!-- Badge -->
+      <span class="result-top-badge">✦ Seu diagnóstico está pronto!</span>
+
+      <!-- Headline dinâmica -->
+      <h2 id="result-headline" class="result-headline"></h2>
+
+      <!-- Hook -->
+      <p class="result-hook">Isso não é falta de fé. É falta de estrutura e direcionamento.</p>
+
+      <!-- Solution -->
+      <div class="result-solution-block">
+        <p class="result-solution-title">
+          O Redespertar resolve isso.<br>
+          <em>30 reflexões. 30 orações. 30 dias de transformação.</em>
+        </p>
+        <p class="result-solution-desc">
+          Baseado em princípios bíblicos comprovados — para você fazer no horário que quiser, onde estiver.
+        </p>
+      </div>
+
+      <!-- CTA 1 -->
+      <div class="result-cta-block">
+        <a href="https://pay.wiapy.com/Rk4D7Ev2EV" class="btn-result-cta">🙏 QUERO MEU REDESPERTAR AGORA →</a>
+        <p class="result-cta-trust">Garantia 7 dias &nbsp;•&nbsp; Acesso imediato ao PDF</p>
+      </div>
+
+      <!-- Journey visual -->
+      <div class="result-journey-card">
+        <p class="result-journey-title">Sua jornada de transformação</p>
+        <svg viewBox="0 0 460 148" xmlns="http://www.w3.org/2000/svg" width="100%" style="display:block">
+          <defs>
+            <linearGradient id="cGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#CCBFA8" stop-opacity="0.5"/>
+              <stop offset="55%" stop-color="#C9A84C" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#1B2A4A"/>
+            </linearGradient>
+            <linearGradient id="aGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#E8DFD0" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#1B2A4A" stop-opacity="0.12"/>
+            </linearGradient>
+          </defs>
+          <!-- Area fill -->
+          <path d="M 30 118 C 100 116, 200 95, 290 62 C 360 36, 410 18, 440 10 L 440 128 L 30 128 Z" fill="url(#aGrad)"/>
+          <!-- Curve -->
+          <path d="M 30 118 C 100 116, 200 95, 290 62 C 360 36, 410 18, 440 10" fill="none" stroke="url(#cGrad)" stroke-width="3" stroke-linecap="round"/>
+          <!-- Dots -->
+          <circle cx="30"  cy="118" r="4.5" fill="#CCBFA8"/>
+          <circle cx="200" cy="95"  r="4.5" fill="#C9A84C"/>
+          <circle cx="440" cy="10"  r="6"   fill="#1B2A4A" stroke="#fff" stroke-width="2"/>
+          <!-- Callout: Primeiros hábitos -->
+          <rect x="140" y="80" width="108" height="22" rx="5" fill="#C9A84C" opacity="0.9"/>
+          <text x="194" y="95" font-family="Poppins,sans-serif" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="600">Primeiros hábitos</text>
+          <!-- Callout: Transformação -->
+          <rect x="336" y="0" width="104" height="22" rx="5" fill="#1B2A4A"/>
+          <text x="388" y="15" font-family="Poppins,sans-serif" font-size="9.5" fill="#fff" text-anchor="middle" font-weight="600">Transformação</text>
+          <!-- X labels -->
+          <text x="30"  y="142" font-family="Poppins,sans-serif" font-size="9" fill="#AAA" text-anchor="middle">Agora</text>
+          <text x="155" y="142" font-family="Poppins,sans-serif" font-size="9" fill="#AAA" text-anchor="middle">Sem. 1–2</text>
+          <text x="295" y="142" font-family="Poppins,sans-serif" font-size="9" fill="#AAA" text-anchor="middle">Sem. 3–4</text>
+          <text x="440" y="142" font-family="Poppins,sans-serif" font-size="9" fill="#1B2A4A" text-anchor="middle" font-weight="600">Dia 30</text>
+        </svg>
+      </div>
+
+      <!-- Big stat -->
+      <div class="result-stat-block">
+        <span class="result-stat-number">94%</span>
+        <p class="result-stat-text">
+          das pessoas com perfil semelhante ao seu sentiram sua fé renovada em até 30 dias.
+          <strong>Não é promessa. É transformação real.</strong>
+        </p>
+      </div>
+
+      <!-- Benefits -->
+      <div class="result-benefits-block">
+        <p class="result-benefits-title">O que vai mudar em 30 dias:</p>
+        <ul class="result-benefits-list">
+          <li>
+            <span class="benefit-check">✓</span>
+            <span>Fé mais viva e intimidade real com Deus</span>
+          </li>
+          <li>
+            <span class="benefit-check">✓</span>
+            <span>Rotina de oração e leitura bíblica consistente</span>
+          </li>
+          <li>
+            <span class="benefit-check">✓</span>
+            <span>Paz, clareza e propósito no dia a dia</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Price box 1 -->
+      <div class="price-box">
+        <div class="price-top-row">
+          <span class="price-from">R$67,00</span>
+          <span class="price-off-badge">45% OFF</span>
+        </div>
+        <div class="price-main">
+          <span class="price-currency">R$</span>
+          <span class="price-integer">37</span>
+          <span class="price-cents">,00</span>
+        </div>
+        <p class="price-sub">Menos de R$1,24 por dia para renovar sua fé completamente</p>
+        <a href="https://pay.wiapy.com/Rk4D7Ev2EV" class="btn-result-cta">🙏 QUERO MEU REDESPERTAR AGORA →</a>
+        <p class="price-guarantees">✓ Garantia 7 dias &nbsp;•&nbsp; ✓ Acesso vitalício ao PDF</p>
+      </div>
+
+      <!-- Testimonials -->
+      <div class="testimonials-block">
+        <p class="testimonials-title">O que leitores como você estão dizendo:</p>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar">MS</div>
+            <div>
+              <p class="testimonial-name">Maria S.</p>
+              <p class="testimonial-info">38 anos</p>
+              <p class="testimonial-stars">★★★★★</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"Estava sem forças para orar há meses. Com o Redespertar, voltei a sentir a presença de Deus já na primeira semana. O conteúdo é profundo mas simples de aplicar. Recomendo de olhos fechados."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar av2">CR</div>
+            <div>
+              <p class="testimonial-name">Carlos R.</p>
+              <p class="testimonial-info">45 anos</p>
+              <p class="testimonial-stars">★★★★★</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"Nunca consegui manter uma rotina devocional. O formato de 30 dias me deu a estrutura que precisava. Em 30 dias minha relação com Deus mudou completamente. Vale muito mais do que o preço."</p>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-header">
+            <div class="testimonial-avatar av3">AL</div>
+            <div>
+              <p class="testimonial-name">Ana L.</p>
+              <p class="testimonial-info">29 anos</p>
+              <p class="testimonial-stars">★★★★★</p>
+            </div>
+          </div>
+          <p class="testimonial-text">"Comprei com medo de não conseguir manter. Mas as reflexões são tão envolventes que eu queria ler todo dia. Minha fé estava fria e hoje sinto como se tivesse renascido espiritualmente."</p>
+        </div>
+      </div>
+
+      <!-- Guarantee -->
+      <div class="guarantee-box">
+        <div class="guarantee-icon">
+          <img src="../Claude quiz/quiz/IAxfL-garantia-7-dias.webp" alt="Garantia 7 dias" />
+        </div>
+        <div>
+          <p class="guarantee-title">Garantia de 7 Dias de Devolução</p>
+          <p class="guarantee-text">Se em 7 dias você não estiver satisfeito(a) com o conteúdo, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p>
+          <span class="guarantee-tag">Risco zero. Resultado garantido.</span>
+        </div>
+      </div>
+
+      <!-- Price box 2 (repeat) -->
+      <div class="price-box">
+        <div class="price-top-row">
+          <span class="price-from">R$67,00</span>
+          <span class="price-off-badge">45% OFF</span>
+        </div>
+        <div class="price-main">
+          <span class="price-currency">R$</span>
+          <span class="price-integer">37</span>
+          <span class="price-cents">,00</span>
+        </div>
+        <p class="price-sub">Menos de R$1,24 por dia para renovar sua fé completamente</p>
+        <a href="https://pay.wiapy.com/Rk4D7Ev2EV" class="btn-result-cta">🙏 QUERO MEU REDESPERTAR AGORA →</a>
+        <p class="price-guarantees">✓ Garantia 7 dias &nbsp;•&nbsp; ✓ Acesso vitalício ao PDF</p>
+      </div>
+
+      <p class="result-disclaimer">*Baseado em relatos de leitores. Resultados individuais podem variar.</p>
+
+    </div>
+  </section>
+
+  <script>
+    var answers = [];
+
+    var screens = [
+      document.getElementById('screen-intro'),
+      document.getElementById('screen-q1'),
+      document.getElementById('screen-q2'),
+      document.getElementById('screen-q3'),
+      document.getElementById('screen-q4'),
+      document.getElementById('screen-analysis'),
+      document.getElementById('screen-loading'),
+      document.getElementById('screen-result')
+    ];
+
+    function showScreen(index) {
+      screens.forEach(function(s) {
+        s.classList.remove('visible');
+        setTimeout(function() {
+          if (!s.classList.contains('active')) {
+            s.style.display = 'none';
+          }
+        }, 300);
+        s.classList.remove('active');
+      });
+
+      var target = screens[index];
+      if (!target) return;
+
+      if (index === 5) {
+        // Reset bar + button animations so they replay each visit
+        var bar = document.getElementById('analysis-bar');
+        var btn = document.querySelector('.btn-analysis');
+        var note = document.querySelector('.analysis-note');
+        bar.style.animation = 'none';
+        btn.style.animation = 'none';
+        note.style.animation = 'none';
+        // Force reflow
+        void bar.offsetWidth;
+        bar.style.animation = '';
+        btn.style.animation = '';
+        note.style.animation = '';
+      }
+
+      if (index === 6) {
+        startLoadingScreen();
+      }
+
+      if (index === 7) {
+        document.getElementById('result-headline').innerHTML = getHeadline();
+      }
+
+      target.style.display = 'flex';
+      target.classList.add('active');
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          target.classList.add('visible');
+        });
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function selectOption(questionIndex, value, element) {
+      var container = element.parentElement;
+      if (container.dataset.selected) return;
+      container.dataset.selected = '1';
+
+      var cards = container.querySelectorAll('.option-card');
+      cards.forEach(function(c) { c.classList.remove('selected'); });
+
+      element.classList.add('selected');
+      answers[questionIndex - 1] = value;
+
+      setTimeout(function() {
+        showScreen(questionIndex + 1);
+        setTimeout(function() { container.dataset.selected = ''; }, 600);
+      }, 450);
+    }
+
+    function startLoadingScreen() {
+      var stepIds = ['lstep-1', 'lstep-2', 'lstep-3', 'lstep-4'];
+      var fill = document.getElementById('loading-bar-fill');
+      var pct  = document.getElementById('loading-percent');
+
+      // Reset all steps
+      stepIds.forEach(function(id) {
+        document.getElementById(id).className = 'loading-step step-pending';
+      });
+      fill.style.transition = 'none';
+      fill.style.width = '0%';
+      pct.textContent = '0%';
+
+      // Step timings: [activate ms, done ms]
+      var timings = [
+        [120,  900],
+        [1000, 1900],
+        [2000, 2900],
+        [3000, 3800]
+      ];
+
+      timings.forEach(function(t, i) {
+        setTimeout(function() {
+          document.getElementById(stepIds[i]).className = 'loading-step step-active';
+        }, t[0]);
+        setTimeout(function() {
+          document.getElementById(stepIds[i]).className = 'loading-step step-done';
+        }, t[1]);
+      });
+
+      // Progress bar counter
+      var elapsed = 0;
+      var duration = 4200;
+      var tick = 50;
+      fill.style.transition = 'width 120ms linear';
+
+      var timer = setInterval(function() {
+        elapsed += tick;
+        var progress = Math.min(Math.round((elapsed / duration) * 100), 100);
+        fill.style.width = progress + '%';
+        pct.textContent = progress + '%';
+        if (elapsed >= duration) {
+          clearInterval(timer);
+          setTimeout(function() { showScreen(7); }, 300);
+        }
+      }, tick);
+    }
+
+    function getHeadline() {
+      var val = answers[0];
+      var headlines = {
+        'acesa':   'Você já tem fé — agora é hora de ir mais fundo',
+        'morna':   'Sua fé não apagou. Ela precisa ser reavivada',
+        'fria':    'Deus não se afastou de você. É hora do seu redespertar',
+        'perdida': 'Essa confusão é o primeiro passo para algo novo'
+      };
+      return headlines[val] || 'É hora do seu redespertar';
+    }
+
+    showScreen(0);
+  </script>
+</body>
+</html>
