@@ -409,21 +409,6 @@
     }
   }
   </style>
-  <script>
-    window.pixelId = "69b8416a91c7354667caf08d";
-    var a = document.createElement("script");
-    a.setAttribute("async", "");
-    a.setAttribute("defer", "");
-    a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-    document.head.appendChild(a);
-  </script>
-  <script
-    src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-    data-utmify-prevent-xcod-sck
-    data-utmify-prevent-subids
-    async
-    defer
-  ></script>
 </head>
 <body>
 <div id="stickyBtn" style="display:none; position:fixed; bottom:0; left:0; right:0; padding:12px 20px 20px; background:transparent; z-index:999;">
@@ -954,6 +939,19 @@
   }
 
   renderStep();
+</script>
+<script>
+  window.addEventListener("load", function() {
+    window.pixelId = "69b8416a91c7354667caf08d";
+    var a = document.createElement("script");
+    a.src = "https://cdn.utmify.com.br/scripts/pixel/pixel.js";
+    document.body.appendChild(a);
+    var b = document.createElement("script");
+    b.src = "https://cdn.utmify.com.br/scripts/utms/latest.js";
+    b.setAttribute("data-utmify-prevent-xcod-sck", "");
+    b.setAttribute("data-utmify-prevent-subids", "");
+    document.body.appendChild(b);
+  });
 </script>
 </body>
 </html>
