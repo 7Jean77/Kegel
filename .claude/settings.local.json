@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(winget install:*)",
+      "Bash(powershell -Command \"Get-Command magick -ErrorAction SilentlyContinue | Select-Object -ExpandProperty Source\")",
+      "Bash(powershell -Command \"& ''C:\\\\Program Files\\\\ImageMagick-7.1.2-Q16-HDRI\\\\magick.exe'' --version\")",
+      "Bash(ffmpeg -version)",
+      "Bash(powershell -Command \"Get-Command ffmpeg -ErrorAction SilentlyContinue | Select-Object Source\")",
+      "Bash(powershell -Command \":*)",
+      "Bash(powershell -Command \"Get-ChildItem ''C:\\\\Program Files'' -Recurse -Filter ''ffmpeg.exe'' -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName\")",
+      "Bash(powershell -Command \"Get-ChildItem ''C:\\\\Users\\\\gilva'' -Recurse -Filter ''ffmpeg.exe'' -ErrorAction SilentlyContinue | Select-Object -First 1 -ExpandProperty FullName\")",
+      "Bash(vercel --prod --scope 7jean77s-projects --yes)",
+      "Bash(ls -t \"c:/Users/gilva/Claude quiz/quiz/\"*.mp4)",
+      "Bash(ls -t /c/Users/gilva/Claude quiz/quiz/*.mp4)",
+      "Bash(powershell -command \"Get-Item ''c:\\\\Users\\\\gilva\\\\Claude quiz\\\\quiz\\\\kling_20260329_作品_pelvic_flo_299_0.mp4'' | Select-Object Length\")",
+      "Bash(node -e ':*)",
+      "Bash(vercel --prod --yes)",
+      "Bash(vercel --prod --yes --name redespertar-quiz)"
+    ]
+  }
+}
